@@ -1,0 +1,44 @@
+Installing php with mysqli
+==============================
+#!/bin/bash/
+
+audo apt update
+
+sudo apt-get install php php-mysqli mysql-server -y
+
+sudo service apache2 restart
+
+
+1) Create your vpc with 2 public subnet and 2 private subnets
+2) Create an IGW and link to the VPC
+3) Create 2 rout tables and link one to your IGW and your public subnet and the other you link to your private subnet
+4) Create a security group for your database opening the port 3306 to your public subnets and port 22 to your bastion server
+5) Create a subnet group within your database console
+6) Create your database 
+7) create a github repository and push the code to your repository
+8) Create your sample ec2-server and clone the application code from the github repository
+     9) Create a bastion to pass through it so as to ssh to your database
+10) Connect to your database using mysql-workbench and transfer the app datatables
+11) Test the connection and make sure everything works
+12) Create an image from your sample ec2-server
+13) Create an SNS TOPIC
+14) create a launch template from the image you created earlier
+15) Now create two target groups, target-1 and target-2
+16 Create a loadbalancer and attach to the two target groups
+17) Create two autoscaling groups and attachech to each target group
+18) Create cloud watch alarms to control the scaling
+19) Create autoscaling policies that respond to the cloud watch alarms
+20) Now demonstrate blue-green deployment and canary deployment 
+
+VPC: 10.15.0.0/16
+PUBLUC SUBNET1     :10.15.0.0/24
+PUBLIC-SUBNET2:     10.15.1.0/24
+PRIVATE-SUBNET-1:   10.15.2.0/24
+PRIVATE-SUBNET-2:   10.15.3.0/24
+
+database endpoint: student-db.cd4m4gcm286n.us-east-1.rds.amazonaws.com
+database name:    student-db
+master user-name: admin
+password          Training123
+schema            simple_attendance_db
+
